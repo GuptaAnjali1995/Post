@@ -172,7 +172,7 @@ export default function PrimarySearchAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            News Feed
+            Posts
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
