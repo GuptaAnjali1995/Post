@@ -30,7 +30,7 @@ export default function BasicPagination({postsPerPage, totalPosts, paginate}) {
         <Pagination count={10} color="primary" />
       ))} */}
      
-      <Pagination count={pageNumbers.length} color="primary" onChange ={()=> paginate()} />
+      <Pagination count={pageNumbers.length} color="primary" onChange ={()=> paginate(pageNumbers)} />
       
     </div>
   );
