@@ -1,4 +1,5 @@
 import React from 'react';
+import {useState}from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -14,6 +15,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -78,6 +80,12 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function PrimarySearchAppBar() {
+
+  const [search, setSearch] = useState("");
+
+  const onChange = event => {
+   setSearch(event.target.value)
+  };
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -174,7 +182,7 @@ export default function PrimarySearchAppBar() {
           <Typography className={classes.title} variant="h6" noWrap>
             Posts
           </Typography>
-          <div className={classes.search}>
+          <div className={classes.search} onChange = {onChange}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>

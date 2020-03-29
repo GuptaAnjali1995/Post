@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Pagination from '@material-ui/lab/Pagination';
+import { Button } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -17,21 +18,24 @@ export default function BasicPagination({postsPerPage, totalPosts, paginate}) {
   const classes = useStyles();
 
   const pageNumbers = [];
+  
 
   for(let i = 1; i<= Math.ceil(totalPosts/postsPerPage); i++){
-    pageNumbers.push(1);
+    pageNumbers.push(i);
   }
 
   console.log('pageNumbers', pageNumbers);
 
   return (
-    <div className={classes.root}>
-      {/* {pageNumbers.map(number => (
-        <Pagination count={10} color="primary" />
-      ))} */}
-     
-      <Pagination count={pageNumbers.length} color="primary" onChange ={()=> paginate(pageNumbers)} />
+    // 
+    <nav>
       
-    </div>
+        {pageNumbers.map(number =>(
+          <Button key ={number} onClick={()=> paginate(number)}>
+            <a>{number}</a>
+          </Button>
+        ))}
+      
+    </nav>
   );
 }

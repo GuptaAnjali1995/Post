@@ -8,11 +8,18 @@ import {useFetch} from '../hooks/Fetch';
 import {useState}  from 'react';
 
 
+
 export default function Container1() {
+
+
+
      
   const res = useFetch("https://hn.algolia.com/api/v1/search_by_date?tags=story&page=0", {});
 
-  const [pageno, setPageno] = React.useState(1);
+  console.log('res', res);
+  console.log('res', res.response);
+
+  
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(9);
   
@@ -28,10 +35,12 @@ export default function Container1() {
   const indexOfFirstPost = indexOfLastPost - postsPerPage;  
   const currentPosts = data.hits.slice(indexOfFirstPost,indexOfLastPost);
 
- 
-  const paginate = (event, value) => {
-    setPageno(value);
+  
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
   };
+
+  
 
   console.log('currentPost', currentPosts);
   console.log ('lstindex', indexOfLastPost);
